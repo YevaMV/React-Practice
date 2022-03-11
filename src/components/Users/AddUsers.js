@@ -4,6 +4,7 @@ import Card from '../UI/Card';
 
 import classes from './AddUsers.module.css';
 import Button from '../UI/Button';
+import ErrorModal from '../UI/ErrorModal';
 
 function AddUsers(props) {
   const [userNameValue, setUserNameValue] = useState('');
@@ -33,25 +34,28 @@ function AddUsers(props) {
   };
 
   return (
-    <Card className={classes.input}>
-      <form onSubmit={addUserHandler}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={userNameValue}
-          onChange={userNameValueHandler}
-        />
-        <label htmlFor="age">Age (Years)</label>
-        <input
-          id="age"
-          type="number"
-          value={userAgeValue}
-          onChange={userAgeValueHandler}
-        />
-        <Button type="submit">Add User</Button>
-      </form>
-    </Card>
+    <div>
+      <ErrorModal title="An error occured" message="Something went wrong" />
+      <Card className={classes.input}>
+        <form onSubmit={addUserHandler}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            value={userNameValue}
+            onChange={userNameValueHandler}
+          />
+          <label htmlFor="age">Age (Years)</label>
+          <input
+            id="age"
+            type="number"
+            value={userAgeValue}
+            onChange={userAgeValueHandler}
+          />
+          <Button type="submit">Add User</Button>
+        </form>
+      </Card>
+    </div>
   );
 }
 
