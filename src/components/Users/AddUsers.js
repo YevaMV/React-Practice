@@ -19,7 +19,16 @@ function AddUsers(props) {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    if (userNameValue.trim().length === 0 || userAgeValue.trim().length === 0) {
+      return;
+    }
+
+    if (userAgeValue < 1) {
+      return;
+    }
     console.log(userNameValue, userAgeValue);
+    setUserNameValue('');
+    setUserAgeValue('');
   };
 
   return (
